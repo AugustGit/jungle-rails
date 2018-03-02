@@ -41,8 +41,8 @@
         </li>
         <li>
           <% if cart.size < 1 %>
-          Your cart is empty
- <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
+          Your cart is empty!
+        <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% else %>
             <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)

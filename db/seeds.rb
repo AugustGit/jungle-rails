@@ -20,7 +20,15 @@ unless Rails.env.development?
 end
 
 # Let's do this ...
+puts "Finding or Creating User ..."
 
+User.destroy_all
+
+   User.create!({
+  name:  'kim',
+  email: 'kim@kim.com',
+  password_digest: 'kim123'
+})
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -35,7 +43,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+prod1 = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -133,4 +141,17 @@ cat3.products.create!({
 })
 
 
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+prod1.reviews.create!({
+  user_id: 1,
+  description: "great",
+  rating: 4,
+
+})
+
+
 puts "DONE!"
+
