@@ -4,6 +4,14 @@
     <h1>My Cart</h1>
   </header>
 
+
+   <%if @cart_total = 0 %>
+
+  <p>  Please add items to your cart.</p>
+  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+   <% else %>
+
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -49,5 +57,5 @@
       <% end %>
     </div>
   </div>
-
+<% end %>
 </section>
