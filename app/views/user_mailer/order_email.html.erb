@@ -1,16 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank your for your order, <%= @current_user.name %></h1>
+    <p>
+      You have successfully ordered the following,
+        <br/>
+    </p>
 
-<section class="orders-show">
-
-  <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
-  </header>
-
-    <div class="order-summary jumbotron">
-
-    <h4>Thank you for your order   <%= current_user.name %> !</h4>
-     <h4>We will send your confirmation email to  <%= current_user.email %> !</h4>
-
-  <div class="panel panel-default items">
+       <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -23,7 +23,8 @@
       <tbody>
         <% @order_total = 0 %>
         <% @order.line_items.each do |line_item| %>
-        <%= render 'item', :line_item => line_item %>
+        <%= render 'item', line_item: line_item %>
+
         <% end %>
       </tbody>
       <tfoot>
@@ -39,7 +40,11 @@
     </table>
   </div>
   </div>
+     <p>
+Thanks for shopping with us and have a great day!
+        <br/>
+    </p>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
-</section>
+  </body>
+</html>
