@@ -29,6 +29,12 @@ User.destroy_all
   email: 'kim@kim.com',
   password_digest: 'kim123'
 })
+
+      User.create!({
+  name:  'eric',
+  email: 'eric@eric.com',
+  password_digest: 'eric123'
+})
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -152,6 +158,12 @@ prod1.reviews.create!({
 
 })
 
+prod1.reviews.create!({
+  user_id: 2,
+  description: " snazzy wow",
+  rating: 3,
+
+})
 
 puts "DONE!"
 

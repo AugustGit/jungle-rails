@@ -1,0 +1,22 @@
+<article class="review">
+  <div>
+    <td>
+      <%= review.description %>
+    </td>
+
+    <td>
+      <%=review.user_id %>
+    </td>
+    says that it is a
+    <td>
+      <%= review.rating%> /5
+    </td>
+     <% if current_user %>
+  <% if (current_user.id == review.user_id) %>
+  <td>
+    <%= link_to fa_icon('trash'), [@product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+  </td>
+  <% end %>
+    <% end %>
+  </div>
+</article>
