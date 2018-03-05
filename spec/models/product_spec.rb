@@ -12,6 +12,7 @@ RSpec.describe Product, type: :model do
       })
     expect(@product.save).to be true
   end
+
    it "does not save when no name assigned" do
     @catgory = Category.new
     @product = Product.new ({
