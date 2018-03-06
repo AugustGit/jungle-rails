@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
 
     @user = User.new ({
       name: "Bill",
-      email: "Bill@Bill.com",
+      email: "bill@bill.com",
       password: "Bill123",
       password_confirmation: "Bill123"
       })
@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
     it "does not save when no name assigned" do
      @user = User.new ({
       name: nil,
-      email: "Kim@Kim.com",
+      email: "kim@kim.com",
       password: "Kim123",
       password_confirmation: "Kim123"
       })
@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
     it "does not save when no password assigned" do
      @user = User.new ({
       name: "Mack",
-      email: "Mack@Mack.com",
+      email: "mack@mack.com",
       password: nil,
       password_confirmation: "Mack123"
       })
@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
   it "does not save when no password_confirmation assigned" do
      @user = User.new ({
       name: "Xip",
-      email: "Xip@Xip.com",
+      email: "xip@xip.com",
       password: "Xip123",
       password_confirmation: nil
       })
@@ -62,7 +62,7 @@ RSpec.describe User, type: :model do
     it "does not save when password & password_confirmation do not match" do
      @user = User.new ({
       name: "Jim",
-      email: "Jim@Jim.com",
+      email: "jim@jim.com",
       password: "Jim123",
       password_confirmation: "Jane456"
       })
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
       it "does not save when user emails match" do
      @user = User.new ({
       name: "Jelly",
-      email: "Jelly@Jelly.com",
+      email: "jelly@jelly.com",
       password: "Jelly123",
       password_confirmation: "Jelly123"
       })
@@ -95,17 +95,17 @@ RSpec.describe User, type: :model do
       it "does not login if user email does not exists" do
        @user = User.new ({
       name: "Jelly",
-      email: "Jelly@Jelly.com",
+      email: "jelly@jelly.com",
       password: "Jelly123",
       password_confirmation: "Jelly123"
       })
    @user.save
-   expect(User.authenticate_with_credentials("elly@Jelly.com", @user.password)).to eq(nil)
+   expect(User.authenticate_with_credentials("elly@jelly.com", @user.password)).to eq(nil)
   end
     it "logs in if user email exists" do
        @user = User.new ({
       name: "Jelly",
-      email: "Jelly@Jelly.com",
+      email: "jelly@jelly.com",
       password: "Jelly123",
       password_confirmation: "Jelly123"
       })
@@ -115,7 +115,7 @@ RSpec.describe User, type: :model do
    it "logs in if user email exists in different case" do
        @user = User.new ({
       name: "Jelly",
-      email: "Jelly@Jelly.com",
+      email: "jelly@jelly.com",
       password: "Jelly123",
       password_confirmation: "Jelly123"
       })
@@ -126,12 +126,12 @@ RSpec.describe User, type: :model do
    it "logs in if user email exists with extra white space" do
        @user = User.new ({
       name: "Jelly",
-      email: "Jelly@Jelly.com",
+      email: "jelly@jelly.com",
       password: "Jelly123",
       password_confirmation: "Jelly123"
       })
    @user.save
-   expect(User.authenticate_with_credentials("Jelly@Jelly.com  ", @user.password)).to eq(@user)
+   expect(User.authenticate_with_credentials("jElly@Jelly.coM  ", @user.password)).to eq(@user)
   end
  end
 end

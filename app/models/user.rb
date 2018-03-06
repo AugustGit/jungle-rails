@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   def self.authenticate_with_credentials(email, password)
-    User.where("email = :email", {email: email.strip}).first
+    User.where("email = :email", {email: email.downcase.strip}).first
     end
 
     has_secure_password
