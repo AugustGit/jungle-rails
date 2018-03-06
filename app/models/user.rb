@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  def self.authenticate_with_credentials(email, password)
+    User.where("email = :email", {email: email.strip}).first
+    end
+
     has_secure_password
 
   validates :name, presence: true

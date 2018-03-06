@@ -91,4 +91,47 @@ RSpec.describe User, type: :model do
     expect(@user2.errors.full_messages).to include "Email has already been taken"
   end
  end
+ describe '.authenticate_with_credentials' do
+      it "does not login if user email does not exists" do
+       @user = User.new ({
+      name: "Jelly",
+      email: "Jelly@Jelly.com",
+      password: "Jelly123",
+      password_confirmation: "Jelly123"
+      })
+   @user.save
+   expect(User.authenticate_with_credentials("elly@Jelly.com", @user.password)).to eq(nil)
+  end
+    it "logs in if user email exists" do
+       @user = User.new ({
+      name: "Jelly",
+      email: "Jelly@Jelly.com",
+      password: "Jelly123",
+      password_confirmation: "Jelly123"
+      })
+   @user.save
+   expect(User.authenticate_with_credentials(@user.email, @user.password)).to eq(@user)
+  end
+   it "logs in if user email exists in different case" do
+       @user = User.new ({
+      name: "Jelly",
+      email: "Jelly@Jelly.com",
+      password: "Jelly123",
+      password_confirmation: "Jelly123"
+      })
+   @user.save
+   expect(User.authenticate_with_credentials("JellY@Jelly.com", @user.password)).to eq(@user)
+  end
+
+   it "logs in if user email exists with extra white space" do
+       @user = User.new ({
+      name: "Jelly",
+      email: "Jelly@Jelly.com",
+      password: "Jelly123",
+      password_confirmation: "Jelly123"
+      })
+   @user.save
+   expect(User.authenticate_with_credentials("Jelly@Jelly.com  ", @user.password)).to eq(@user)
+  end
+ end
 end
